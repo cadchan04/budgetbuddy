@@ -11,7 +11,8 @@ import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetItem from "../components/BudgetItem";
 
 // helper functions
-import {fetchData} from "../helpers"
+
+import {createBudget, fetchData, waait} from "../helpers"
 
 // loader
 export function dashboardLoader() {
@@ -22,21 +23,37 @@ export function dashboardLoader() {
 
 // action
 export async function dashboardAction({request}){
+   await waait();
+   
     // get FormData from request body
     const data = await request.formData();
-    // convert FormData to plain object
-    const formData = Object.fromEntries(data);
-    try {
-        // save userName to session storage
-        localStorage.setItem("userName", JSON.stringify(formData.userName));
-
-        // return toast success message
-        return toast.success('Welcome to Budget Buddy, ' + formData.userName + '! ヽ(´▽`)/');
-    } 
-    catch (error) {
-        throw new Error("There was a problem creating your account. Please try again later. щ（ﾟДﾟщ）");  
+    const {_action, ...values } = Object.fromEntries(data);
+    console.log(_action)
+    // new user submission
+    if (_action == "newUser") {
+        try {
+            // save userName to session storage
+            localStorage.setItem("userName", JSON.stringify(values.userName));
+            // return toast success message
+            return toast.success('Welcome to Budget Buddy, ' + values.userName + '! ヽ(´▽`)/');
+        } 
+        catch (error) {
+            throw new Error("There was a problem creating your account. Please try again later. щ（ﾟДﾟщ）");  
+        }
     }
-
+    if (_action == "createBudget") {
+        try {
+            // create budget
+            createBudget({
+                name: values.newBudget,
+                amount: values.newBudgetAmount
+            })
+            return toast.success("Budget created!");
+        } 
+        catch (error) {
+            throw new Error("There was a problem creating your budget. Please try again. щ（ﾟДﾟщ）");  
+        }
+    }
 }
 
 // if (_action === "createExpense") {
