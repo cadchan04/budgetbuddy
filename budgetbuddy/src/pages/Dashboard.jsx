@@ -39,20 +39,20 @@ export async function dashboardAction({request}){
 
 }
 
-if (_action === "createExpense") {
-    try {
-       //create expense 
-       createExpense({
-        name: values.newExpense,
-        amount: values.AddExpenseAmount,
-        budgetId: values.newExpenseBudget
-       })
-       return TransformStream.success(`"Expense 
-        ${values.newExpense} craeted!"`)
-    } catch (e) {
-        throw new Error("There was a problem creating your expense.")
-    }
-}
+// if (_action === "createExpense") {
+//     try {
+//        //create expense 
+//        createExpense({
+//         name: values.newExpense,
+//         amount: values.AddExpenseAmount,
+//         budgetId: values.newExpenseBudget
+//        })
+//        return TransformStream.success(`"Expense 
+//         ${values.newExpense} craeted!"`)
+//     } catch (e) {
+//         throw new Error("There was a problem creating your expense.")
+//     }
+// }
 
 const Dashboard = () => {
     const { userName, budgets } = useLoaderData()

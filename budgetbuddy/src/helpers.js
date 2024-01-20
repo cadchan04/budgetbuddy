@@ -23,3 +23,14 @@ export const createExpense = ({
     return localStorage.setItem("expenses",
         JSON.stringify([...existingExpenses, newItem]))
 }
+
+// FORMATTING
+
+// format currency
+export const formatCurrency = (amt) => {
+    return amt.toLocaleString(undefined, {
+        style: "currency",
+        currency: "USD"
+    })
+
+}
