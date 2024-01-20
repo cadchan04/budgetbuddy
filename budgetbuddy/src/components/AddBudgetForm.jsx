@@ -55,8 +55,9 @@ const AddBudgetForm = () => {
                         inputMode="decimal"
                     />
                </div>
-               <button type="submit" className="btn btn--light" 
-               disabled={isSubmitting}>
+               <input type="hidden" name="_action" value="createBudget" />
+               <button type="submit" className="btn btn--light"
+                disabled={isSubmitting}>
                     {
                         isSubmitting ? <span>Submitting budget</span> 
                         : (
@@ -66,6 +67,7 @@ const AddBudgetForm = () => {
                             </>
                         )
                     }
+
                 </button>
             </fetcher.Form>
         </div>
