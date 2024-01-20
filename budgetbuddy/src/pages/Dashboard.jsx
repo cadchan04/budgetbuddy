@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 // components
 import Intro from "../components/intro";
 import AddBudgetForm from "../components/AddBudgetForm";
+import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetItem from "../components/BudgetItem";
 
 // helper functions
@@ -36,6 +37,21 @@ export async function dashboardAction({request}){
         throw new Error("There was a problem creating your account. Please try again later. щ（ﾟДﾟщ）");  
     }
 
+}
+
+if (_action === "createExpense") {
+    try {
+       //create expense 
+       createExpense({
+        name: values.newExpense,
+        amount: values.AddExpenseAmount,
+        budgetId: values.newExpenseBudget
+       })
+       return TransformStream.success(`"Expense 
+        ${values.newExpense} craeted!"`)
+    } catch (e) {
+        throw new Error("There was a problem creating your expense.")
+    }
 }
 
 const Dashboard = () => {
