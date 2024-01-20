@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 // components
 import AddBudgetForm from "../components/AddBudgetForm";
+import BudgetItem from "../components/BudgetItem";
 
 // helper functions
 import {fetchData} from "../helpers"
@@ -34,6 +35,14 @@ const Dashboard = () => {
                                 <div className="flex-lg">
                                     <AddBudgetForm />
                                     <AddExpenseForm budgets={budgets} />
+                                </div>
+                                <h2>Existing Budgets</h2>
+                                <div className="budgets">
+                                    {
+                                        budgets.map((budget) => {
+                                            <BudgetItem key={budget.id} budget={budget} />
+                                        })
+                                    }
                                 </div>
                             </div>
                         )
