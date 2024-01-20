@@ -1,9 +1,15 @@
 // rrd imports
-import { useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
+
+// assets
+// import wave from "../assets/wave.svg"
+import greenChoppyWave from "../assets/greenChoppyWave.svg"
+
+// components
+import Nav from "../components/Nav"
 
 // helper functions
-
-import { fetchData } from "../helpers"
+import  { fetchData } from "../helpers"
 
 // loader
 export function mainLoader() {
@@ -15,9 +21,12 @@ const Main = () => {
     const { userName } = useLoaderData()
 
     return (
-        <div>
-            <h1>{userName}</h1>
-            Main
+        <div className="layout">
+            <Nav userName={userName} />
+            <main>
+                <Outlet />
+            </main>
+            <img src={ greenChoppyWave } alt="" />
         </div>
     )
 }
