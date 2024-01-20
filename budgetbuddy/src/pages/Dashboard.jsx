@@ -11,7 +11,8 @@ import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetItem from "../components/BudgetItem";
 
 // helper functions
-import {createBudget, fetchData} from "../helpers"
+
+import {createBudget, fetchData, waait} from "../helpers"
 
 // loader
 export function dashboardLoader() {
@@ -22,6 +23,8 @@ export function dashboardLoader() {
 
 // action
 export async function dashboardAction({request}){
+   await waait();
+   
     // get FormData from request body
     const data = await request.formData();
     const {_action, ...values } = Object.fromEntries(data);

@@ -31,6 +31,10 @@ export const deleteItem = ({key}) => {
     return localStorage.removeItem(key)
 }
 
+export const waait = () => new Promise(res => setTimeout
+    (res, Math.random() * 2000))
+
+
 //create Expense
 export const createExpense = ({
     name, amount, budgetId
