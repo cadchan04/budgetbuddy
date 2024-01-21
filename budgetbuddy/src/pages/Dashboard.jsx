@@ -62,7 +62,7 @@ export async function dashboardAction({request}){
             amount: values.AddExpenseAmount,
             budgetId: values.newExpenseBudget
         })
-        return TransformStream.success(`"Expense 
+        return toast.success(`"Expense 
             ${values.newExpense} created!"`)
         } catch (e) {
             throw new Error("There was a problem creating your expense.")
