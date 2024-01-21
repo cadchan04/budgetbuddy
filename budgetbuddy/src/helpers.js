@@ -49,7 +49,7 @@ export const calculateSpentByBudget = (budgetId) => {
 }
 
 // create Expense
-export const waait = () => new Promise(res => setTimeout (res, Math.random() * 2000))
+export const waait = () => new Promise(res => setTimeout (res, Math.random() * 800))
 
 export const createExpense = ({
     name, amount, budgetId
@@ -67,6 +67,9 @@ export const createExpense = ({
 }
 
 // FORMATTING
+export const formatDateToLocaleString = (epoch) => 
+new Date(epoch).toLocaleDateString();
+
 
 // formatting percentages
 export const formatPercentage = (amt) => {
