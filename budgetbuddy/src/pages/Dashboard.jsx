@@ -13,7 +13,7 @@ import Table from "../components/Table";
 
 
 // helper functions
-import {createBudget, createExpense, deleteItem, fetchData, waait, calculateTotalSpendings, formatCurrency} from "../helpers"
+import {createBudget, createExpense, deleteItem, fetchData, waait, calculateTotalSpendings, formatCurrency, getBudget, calculateSpentByBudget} from "../helpers"
 
 
 // loader
@@ -68,6 +68,9 @@ export async function dashboardAction({request}){
             amount: values.newExpenseAmount,
             budgetId: values.newExpenseBudget
         })
+        if (calculateSpentByBudget(values.newExpenseBudget) > getBudget(values.newExpenseBudget)) {
+            toast.success(`"You have gone over budget!"`)
+        }
         return toast.success(`"Expense 
             ${values.newExpense} created!"`)
         } catch (e) {

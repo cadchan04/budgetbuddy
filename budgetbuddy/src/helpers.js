@@ -72,6 +72,19 @@ export const calculateTotalSpendings = () => {
     return totalSpendings;
 }
 
+
+export const getBudget = (budgetId) => {
+    // get all expenses
+    const budgets = fetchData("budgets") ?? [];
+
+    // loop through all expenses
+    const budgetSpent = budgets.reduce((acc, budget) => {
+        // check if expense.id == budgetId that is passed in
+        if (budget.budgetId !== budgetId) return budget.amount
+    }, 0)
+    return budgetSpent;
+}
+
 // create Expense
 export const waait = () => new Promise(res => setTimeout (res, Math.random() * 800))
 
