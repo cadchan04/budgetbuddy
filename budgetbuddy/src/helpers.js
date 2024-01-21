@@ -48,6 +48,19 @@ export const calculateSpentByBudget = (budgetId) => {
     return budgetSpent;
 }
 
+export const calculateTotalSpendings = () => {
+    // get all expenses
+    const expenses = fetchData("expenses") ?? [];
+
+    // loop through all expenses
+    const totalSpendings = expenses.reduce((acc, expense) => {
+        // add the current amount to my total
+        return acc += expense.amount
+
+    }, 0)
+    return totalSpendings;
+}
+
 // create Expense
 export const waait = () => new Promise(res => setTimeout (res, Math.random() * 800))
 

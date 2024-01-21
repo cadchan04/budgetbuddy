@@ -14,7 +14,7 @@ import Table from "../components/Table";
 
 // helper functions
 
-import {createBudget, createExpense, fetchData, waait} from "../helpers"
+import {createBudget, createExpense, fetchData, waait, calculateTotalSpendings} from "../helpers"
 
 // loader
 export function dashboardLoader() {
@@ -75,6 +75,7 @@ export async function dashboardAction({request}){
 
 const Dashboard = () => {
     const { userName, budgets, expenses } = useLoaderData()
+    const totalSpendings = calculateTotalSpendings()
 
     return (
         // <div>
@@ -117,6 +118,7 @@ const Dashboard = () => {
                                                 >
                                                 View all expenses</Link>
                                             )}
+                                            <h3>Total Expenses: {" $" + totalSpendings}</h3>
                                         </div>
                                     )
                                 }

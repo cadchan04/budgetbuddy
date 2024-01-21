@@ -1,9 +1,15 @@
 /* eslint-disable react/prop-types */
 
+//rrd imports
+import {Form,  Link } from "react-router-dom";
+
+//library imports
+import { BanknotesIcon } from "@heroicons/react/24/solid";
+
 // helper functions
 import { calculateSpentByBudget, formatCurrency, formatPercentage } from "../helpers";
 
-const BudgetItem = ({budget}) => {
+const BudgetItem = ({budget, showDelete = false}) => {
     const {id, name, amount, color} = budget;
     const spent = calculateSpentByBudget(id)
 
@@ -25,6 +31,21 @@ const BudgetItem = ({budget}) => {
                 <small>{formatCurrency(spent)} spent</small>
                 <small>{formatCurrency(amount - spent)} remaining</small>
             </div>
+            {
+                showDelete ? (
+                    <div className="flex-sm">
+                        <Form>
+                            <p>hi</p>
+                        </Form>
+                    </div>
+                ) : (
+                    <div className="flex-sm">
+                        <Link to={`/budget/${id}`} className="btn">
+                            <span>View Details</span>
+                            <BanknotesIcon width={20} />
+                        </Link>
+                    </div>
+                )}
         </div>
     )
 }
