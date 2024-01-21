@@ -14,7 +14,7 @@ import Table from "../components/Table";
 
 // helper functions
 
-import {createBudget, createExpense, fetchData, waait} from "../helpers"
+import {createBudget, createExpense, deleteItem, fetchData, waait} from "../helpers"
 
 // loader
 export function dashboardLoader() {
@@ -71,6 +71,19 @@ export async function dashboardAction({request}){
             throw new Error("There was a problem creating your expense.")
         }
     }
+
+    if (_action === "deleteExpense") {
+        try {
+        // delete expense
+        deleteItem ({
+            key: "expenses",
+            id: values.expenseId,
+        });
+        return toast.success("Expense deleted!")
+        } catch (e) {
+            throw new Error("There was a problem deleting your expense.")
+        }
+    }
 }
 
 const Dashboard = () => {
@@ -104,7 +117,7 @@ const Dashboard = () => {
                                 </div>
                                 {
                                     expenses && expenses.length > 0 && (
-                                        <div classname="grid-md"> 
+                                        <div className="grid-md"> 
                                             <h2>Recent Expenses</h2>
                                             <Table expenses={expenses
                                             .sort((a, b) => b.createdAt - a.createdAt)}/>
