@@ -13,7 +13,7 @@ import Table from "../components/Table";
 
 
 // helper functions
-import {createBudget, createExpense, fetchData, waait, calculateTotalSpendings, formatCurrency} from "../helpers"
+import {createBudget, createExpense, deleteItem, fetchData, waait, calculateTotalSpendings, formatCurrency} from "../helpers"
 
 
 // loader
@@ -32,6 +32,7 @@ export async function dashboardAction({request}){
     const data = await request.formData();
     const {_action, ...values } = Object.fromEntries(data);
     console.log(_action)
+
     // new user submission
     if (_action == "newUser") {
         try {
@@ -44,6 +45,7 @@ export async function dashboardAction({request}){
             throw new Error("There was a problem creating your account. Please try again later. щ（ﾟДﾟщ）");  
         }
     }
+
     if (_action == "createBudget") {
         try {
             // create budget
@@ -57,6 +59,7 @@ export async function dashboardAction({request}){
             throw new Error("There was a problem creating your budget. Please try again. щ（ﾟДﾟщ）");  
         }
     }
+
     if (_action === "createExpense") {
         try {
         //create expense 
@@ -81,7 +84,7 @@ export async function dashboardAction({request}){
         });
         return toast.success("Expense deleted!")
         } catch (e) {
-            throw new Error("There was a problem deleting your expense.")
+            throw new Error("There was a problem deleting your expense D:");
         }
     }
 }
