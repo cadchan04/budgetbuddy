@@ -4,6 +4,11 @@
 import ExpenseItem from "./ExpenseItem"
 
 const Table = ({ expenses, showBudget = true }) => {
+    // Make headers Dark Pink
+    const headerStyle = {
+        backgroundColor: "#D757A8",
+    }
+
     return (
         <div className="table">
             <table>
@@ -12,7 +17,7 @@ const Table = ({ expenses, showBudget = true }) => {
                         {
                             ["Name", "Amount", "Date", showBudget ? "Budget" : "", ""].map((i,
                                 index) => (
-                                    <th key={index}>{i}</th>
+                                    <th key={index} style={headerStyle}>{i}</th>
                                 ))
                         }
                     </tr>
