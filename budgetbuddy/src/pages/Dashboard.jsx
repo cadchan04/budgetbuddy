@@ -99,7 +99,7 @@ const Dashboard = () => {
         <>
             {userName ? (
             <div className="dashboard">
-                <h1>Welcome, <span className="accent">{userName}</span></h1>
+                <h1> Welcome, <span style= {{color: "#D757A8"}}>{userName}</span></h1>
                 <div className="grid-sm">
                     {
                         budgets && budgets.length > 0
