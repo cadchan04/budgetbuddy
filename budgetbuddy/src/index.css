@@ -112,6 +112,22 @@ p {
   color: hsl(var(--accent));
 }
 
+@keyframes flashingText {
+  0% {
+    font-weight: bold;
+  }
+  50% {
+    font-weight: normal;
+  }
+  100% {
+    font-weight: bold;
+  }
+}
+
+.highlight {
+  animation: flashingText 1s infinite; /* Adjust the duration as needed */
+}
+
 .muted {
   color: hsl(var(--muted));
 }
