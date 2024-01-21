@@ -14,7 +14,7 @@ const generateRandomColor = () => {
 export const getAllMatchingItems = ({category, key, value}) => {
     const data = fetchData(category) ?? [];
     return data.filter((item) => item[key] === value);
-}
+};
 
 // delete item from local storage
 export const deleteItem = ({key, id}) => {

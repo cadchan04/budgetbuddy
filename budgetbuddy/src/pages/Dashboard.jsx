@@ -90,10 +90,6 @@ const Dashboard = () => {
     const { userName, budgets, expenses } = useLoaderData()
 
     return (
-        // <div>
-        //     <h1>{userName}</h1>
-        //     Dashboard
-        // </div>
         <>
             {userName ? (
             <div className="dashboard">
@@ -126,7 +122,7 @@ const Dashboard = () => {
                                             {expenses.length > 8 && (
                                                 <Link
                                                 to="expenses"
-                                                className="btn btn--dark"
+                                                className="btn btn--light"
                                                 >
                                                 View all expenses</Link>
                                             )}
