@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 // imports
 import { CurrencyDollarIcon } from "@heroicons/react/24/solid"
 import { Form } from "react-router-dom"

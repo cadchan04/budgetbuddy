@@ -11,7 +11,6 @@ import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetItem from "../components/BudgetItem";
 import Table from "../components/Table";
 
-
 // helper functions
 import {createBudget, createExpense, deleteItem, fetchData, waait, calculateTotalSpendings, formatCurrency} from "../helpers"
 
@@ -97,7 +96,7 @@ const Dashboard = () => {
         <>
             {userName ? (
             <div className="dashboard">
-                <h1>Welcome back, <span className="accent">{userName}</span></h1>
+                <h1>Welcome, <span className="accent">{userName}</span></h1>
                 <div className="grid-sm">
                     {
                         budgets && budgets.length > 0
