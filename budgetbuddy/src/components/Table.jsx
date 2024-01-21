@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
+
 //component import
 import ExpenseItem from "./ExpenseItem"
 
-const Table = ({ expenses }) => {
+const Table = ({ expenses, showBudget = true }) => {
     // Make headers Dark Pink
     const headerStyle = {
         backgroundColor: "#D757A8",
@@ -13,7 +15,7 @@ const Table = ({ expenses }) => {
                 <thead>
                     <tr>
                         {
-                            ["Name", "Amount", "Date"].map((i,
+                            ["Name", "Amount", "Date", showBudget ? "Budget" : "", ""].map((i,
                                 index) => (
                                     <th key={index} style={headerStyle}>{i}</th>
                                 ))
@@ -24,7 +26,7 @@ const Table = ({ expenses }) => {
                     {
                        expenses.map((expense) => (
                         <tr key={expense.id}>
-                            <ExpenseItem expense={expense}/>
+                            <ExpenseItem expense={expense} showBudget={showBudget} />
                         </tr>
                        )) 
                     }
