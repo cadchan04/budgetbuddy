@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 // helper functions
 import { calculateSpentByBudget, formatCurrency, formatPercentage } from "../helpers";
 

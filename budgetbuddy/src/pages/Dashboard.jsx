@@ -59,7 +59,7 @@ export async function dashboardAction({request}){
         //create expense 
         createExpense({
             name: values.newExpense,
-            amount: values.AddExpenseAmount,
+            amount: values.newExpenseAmount,
             budgetId: values.newExpenseBudget
         })
         return toast.success(`"Expense 
@@ -95,7 +95,7 @@ const Dashboard = () => {
                                 <div className="budgets">
                                     {
                                         budgets.map((budget) => {
-                                            <BudgetItem key={budget.id} budget={budget} />
+                                            return (<BudgetItem key={budget.id} budget={budget} />)
                                         })
                                     }
                                 </div>

@@ -49,8 +49,7 @@ export const calculateSpentByBudget = (budgetId) => {
 }
 
 // create Expense
-export const waait = () => new Promise(res => setTimeout
-    (res, Math.random() * 2000))
+export const waait = () => new Promise(res => setTimeout (res, Math.random() * 2000))
 
 export const createExpense = ({
     name, amount, budgetId
@@ -59,7 +58,7 @@ export const createExpense = ({
         id: crypto.randomUUID(),
         name: name,
         createdAt: Date.now(),
-        ammount: +amount,
+        amount: +amount,
         budgetId: budgetId
     }
     const existingExpenses = fetchData("expenses") ?? [];
