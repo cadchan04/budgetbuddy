@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 //react imports
 import { useRef } from "react"
 
@@ -27,8 +29,7 @@ const AddExpenseForm = ({budgets}) => {
         <div className="form-wrapper">
             <h2 className="h3">Add New {" "}<span
             className="accent">
-                {budgets.length === 1 && `${budgets.map
-                ((budg) => budg.name)}`}
+                {budgets.length === 1 && `${budgets.map ((budg) => budg.name)}`}
             </span> {" "}
                 Expense
             </h2> 
@@ -84,7 +85,7 @@ const AddExpenseForm = ({budgets}) => {
                          </select>
                           
                     </div>
-                    <input tupe="hidden" name="_action"
+                    <input type="hidden" name="_action"
                     value="createExpense" />
                     <button type="submit" className="btn 
                     btn--dark" disabled={isSubmitting}>
