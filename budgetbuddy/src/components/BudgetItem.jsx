@@ -8,6 +8,7 @@ import { BanknotesIcon } from "@heroicons/react/24/solid";
 
 // helper functions
 import { calculateSpentByBudget, formatCurrency, formatPercentage } from "../helpers";
+import { toast } from "react-toastify";
 
 const BudgetItem = ({budget, showDelete = false}) => {
     const {id, name, amount, color} = budget;
@@ -31,6 +32,17 @@ const BudgetItem = ({budget, showDelete = false}) => {
                 <small>{formatCurrency(spent)} spent</small>
                 <small>{formatCurrency(amount - spent)} remaining</small>
             </div>
+            {amount - spent < 0 && (
+                <div className="alert">
+                    <small>
+                        <strong>
+                            <span className="highlight">
+                            You've exceeded your budget for {name} by {formatCurrency(spent - amount)}! (╯°□°）╯︵ ┻━┻
+                            </span>
+                        </strong>
+                    </small>
+                </div>
+            )}
             {
                 showDelete ? (
                     <div className="flex-sm">
