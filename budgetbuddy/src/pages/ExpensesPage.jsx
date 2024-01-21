@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import Table from "../components/Table";
 
 // helper functions
-import { deleteItem, fetchData } from "../helpers";
+import { calculateTotalSpendings, deleteItem, fetchData, formatCurrency } from "../helpers";
 
 export async function expensesLoader() {
     const expenses = fetchData("expenses");
@@ -35,6 +35,7 @@ export async function expensesAction({ request }) {
 }
 
 const ExpensesPage = () => {
+    const totalSpendings = calculateTotalSpendings()
     const { expenses } = useLoaderData();
     return (
         <div className="grid-lg">
@@ -44,6 +45,7 @@ const ExpensesPage = () => {
                     <div className="grid-md">
                         <h2>Recent Expenses <small>({expenses.length} total)</small></h2>
                         <Table expenses={expenses} />
+                        <h3>Total Expenses: {" " + formatCurrency(totalSpendings)}</h3>
                     </div>
                 ) : (
                     <p>No expenses found.</p>

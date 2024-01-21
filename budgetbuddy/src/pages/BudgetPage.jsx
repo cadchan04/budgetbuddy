@@ -12,7 +12,7 @@ import BudgetItem from "../components/BudgetItem";
 import Table from "../components/Table";
 
 // helpers
-import { createExpense, deleteItem, getAllMatchingItems } from "../helpers"
+import { calculateSpentByBudget, createExpense, deleteItem, formatCurrency, getAllMatchingItems } from "../helpers"
 
 // loader
 export async function budgetLoader({params}) {
@@ -73,6 +73,7 @@ export async function budgetAction({ request }) {
 
 const BudgetPage = () => {
     const { budget, expenses } = useLoaderData();
+    const budgetTotal = calculateSpentByBudget(budget.id);
     
     return (
         <div 
@@ -97,6 +98,7 @@ const BudgetPage = () => {
                             Expenses
                         </h2>
                         <Table expenses={expenses} showBudget={false}/>
+                        <h3>Total <span className="accent">{budget.name} </span> Expenses: {" " + formatCurrency(budgetTotal)}</h3>
                     </div>
                 )
             }
