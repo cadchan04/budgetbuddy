@@ -16,5 +16,7 @@ Worried about overspending? Donn't worry! Receive notifications when you approac
 💡 Easy Expense Management:
 Add your expenses effortlessly to a dedicated expenses list. Keep a detailed record of your spending habits, making it simple to review and adjust your budget as needed. Our app empowers you to take charge of your financial journey with just a few taps.
 
+![image](https://github.com/user-attachments/assets/2b4bb6d0-cddd-4dec-8491-2ecd9feac3e1)
+
 To run:
 npm run dev
